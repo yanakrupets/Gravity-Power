@@ -9,7 +9,7 @@ public class GravityController : MonoBehaviour
     [SerializeField] private float fallSpeedMultiplier = 1.2f;
     
     [SerializeField] private InputActionAsset inputActionAsset;
-    [SerializeField] private List<Physic2DElement> physicElements;
+    [SerializeField] private Physic2DElement[] physicElements;
     
     private bool _isPositive;
     private InputAction _changeGravityAction;

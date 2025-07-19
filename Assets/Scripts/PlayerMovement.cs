@@ -13,10 +13,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GravityController gravityController;
     [SerializeField] private InputActionAsset inputActionAsset;
     [SerializeField] private Physic2DElement playerPhysic2D;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
     
     private float _horizontal;
     private InputAction _moveAction;
     private InputAction _jumpAction;
+    private bool _isFacingRight;
+    private bool _isMove;
     
     private void Awake()
     {
@@ -26,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
         _moveAction.performed += Move;
         _moveAction.canceled += StopMove;
         _jumpAction.performed += Jump;
+
+        _isFacingRight = true;
     }
     
     private void OnEnable()
@@ -43,11 +49,20 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         playerPhysic2D.Rb.velocity = new Vector2(_horizontal * speed, playerPhysic2D.Rb.velocity.y);
+        
+        float velocityForAnimation = gravityController.IsPositive 
+            ? playerPhysic2D.Rb.velocity.y 
+            : -playerPhysic2D.Rb.velocity.y;
+        
+        animator.SetFloat("Speed", Mathf.Abs(_horizontal));
+        animator.SetFloat("YVelocity", velocityForAnimation);
+        animator.SetBool("IsGrounded", IsGrounded());
     }
 
     private void Move(InputAction.CallbackContext context)
     {
         _horizontal = context.ReadValue<Vector2>().x;
+        Flip();
     }
 
     private void StopMove(InputAction.CallbackContext context)
@@ -66,6 +81,24 @@ public class PlayerMovement : MonoBehaviour
         {
             float direction = gravityController.IsPositive ? 1 : -1;
             playerPhysic2D.Rb.velocity = new Vector2(playerPhysic2D.Rb.velocity.x, jumpForce * direction);
+        }
+    }
+
+    private void Flip()
+    {
+        if (_horizontal == 0) return;
+    
+        var shouldFaceRight = _horizontal > 0;
+    
+        if (!gravityController.IsPositive)
+        {
+            shouldFaceRight = !shouldFaceRight;
+        }
+    
+        if (_isFacingRight != shouldFaceRight)
+        {
+            _isFacingRight = shouldFaceRight;
+            spriteRenderer.flipX = !_isFacingRight;
         }
     }
     

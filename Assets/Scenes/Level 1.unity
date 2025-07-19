@@ -3482,6 +3482,10 @@ PrefabInstance:
       propertyPath: gravityController
       value: 
       objectReference: {fileID: 1355426232}
+    - target: {fileID: 6845015315822103291, guid: a358c2eb57101b346835b5ee62b04369, type: 3}
+      propertyPath: animationController
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
