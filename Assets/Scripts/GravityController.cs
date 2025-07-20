@@ -20,9 +20,18 @@ public class GravityController : MonoBehaviour
         _changeGravityAction = inputActionAsset.FindAction("ChangeGravity");
         _changeGravityAction.performed += ChangeGravity;
     }
-    
-    private void OnEnable() => _changeGravityAction.Enable();
-    private void OnDisable() => _changeGravityAction.Disable();
+
+    private void OnEnable()
+    {
+        _changeGravityAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _changeGravityAction.performed -= ChangeGravity;
+        
+        _changeGravityAction.Disable();
+    }
 
     private void Start()
     {

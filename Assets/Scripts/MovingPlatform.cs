@@ -16,7 +16,10 @@ public class MovingPlatform : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _nextPosition, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(
+            transform.position, 
+            _nextPosition, 
+            speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, _nextPosition) <= DistanceThreshold)
         {

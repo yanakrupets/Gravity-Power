@@ -20,8 +20,13 @@ public class Door : MonoBehaviour
 
         _completeLevelAction.Disable();
     }
-    
-    private void OnDisable() => _completeLevelAction.Disable();
+
+    private void OnDisable()
+    {
+        _completeLevelAction.performed -= CompleteLevel;
+        
+        _completeLevelAction.Disable();
+    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {

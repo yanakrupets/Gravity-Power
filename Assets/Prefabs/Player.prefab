@@ -61,6 +61,7 @@ MonoBehaviour:
   gravityController: {fileID: 0}
   inputActionAsset: {fileID: -944628639613478452, guid: 5d8f83562f738e843aada466ab270d54, type: 3}
   playerPhysic2D: {fileID: 137694890125266316}
+  mainCollider2D: {fileID: 5497646576321949685}
   spriteRenderer: {fileID: 7828964773855878669}
   animator: {fileID: 7926454386123275830}
 --- !u!114 &137694890125266316

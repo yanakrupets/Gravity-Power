@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GravityController gravityController;
     [SerializeField] private InputActionAsset inputActionAsset;
     [SerializeField] private Physic2DElement playerPhysic2D;
+    [SerializeField] private Collider2D mainCollider2D;
     
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
@@ -43,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        _moveAction.performed -= Move;
+        _moveAction.canceled -= StopMove;
+        _jumpAction.performed -= Jump;
+        
         _moveAction.Disable();
         _jumpAction.Disable();
     }
@@ -112,5 +117,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            animator.SetTrigger("Death");
+            mainCollider2D.isTrigger = true;
+        }
     }
 }
