@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GravityController gravityController;
     [SerializeField] private InputActionAsset inputActionAsset;
     [SerializeField] private Physic2DElement playerPhysic2D;
+    
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     
