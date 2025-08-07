@@ -6,9 +6,6 @@ public class RelatedButton : MonoBehaviour
     [SerializeField] private Sprite activeSprite;
     [SerializeField] private Sprite inactiveSprite;
     
-    private const string PlayerTag = "Player";
-    private const string CrateTag = "Crate";
-    
     private RelatedButtonsController _controller;
     private SpriteRenderer _spriteRenderer;
     private bool _isActive;
@@ -31,7 +28,7 @@ public class RelatedButton : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_isActive && (other.CompareTag(PlayerTag) || other.CompareTag(CrateTag)))
+        if (_isActive && (other.CompareTag(Consts.PlayerTag) || other.CompareTag(Consts.CrateTag)))
         {
             _controller.OnButtonPressed(this);
         }

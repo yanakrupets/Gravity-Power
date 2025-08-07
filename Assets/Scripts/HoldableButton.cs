@@ -10,9 +10,6 @@ public class HoldableButton : MonoBehaviour
     [SerializeField] private UnityEvent onInteract;
     [SerializeField] private UnityEvent onStopInteract;
     
-    private const string PlayerTag = "Player";
-    private const string CrateTag = "Crate";
-    
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
@@ -27,7 +24,7 @@ public class HoldableButton : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(PlayerTag) || other.CompareTag(CrateTag))
+        if (other.CompareTag(Consts.PlayerTag) || other.CompareTag(Consts.CrateTag))
         {
             Interact(false);
             onInteract?.Invoke();
@@ -36,7 +33,7 @@ public class HoldableButton : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(PlayerTag) || other.CompareTag(CrateTag))
+        if (other.CompareTag(Consts.PlayerTag) || other.CompareTag(Consts.CrateTag))
         {
             Interact(true);
             onStopInteract?.Invoke();

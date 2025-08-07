@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 
-  helpInputkey: {fileID: 1955155610554305284}
+  helpInputKey: {fileID: 1955155610554305284}
   inputActionAsset: {fileID: -944628639613478452, guid: 5d8f83562f738e843aada466ab270d54, type: 3}
 --- !u!61 &541358012892601981
 BoxCollider2D:

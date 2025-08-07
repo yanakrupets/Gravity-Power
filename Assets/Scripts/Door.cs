@@ -6,11 +6,8 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private string nextScene;
     
-    [SerializeField] private GameObject helpInputkey;
+    [SerializeField] private GameObject helpInputKey;
     [SerializeField] private InputActionAsset inputActionAsset;
-    
-    private const string PlayerTag = "Player";
-    private const string KeyTag = "Key";
 
     private InputAction _completeLevelAction;
     private bool _playerInRange;
@@ -33,10 +30,10 @@ public class Door : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(PlayerTag))
+        if (other.CompareTag(Consts.PlayerTag))
             _playerInRange = true;
         
-        if (other.CompareTag(KeyTag))
+        if (other.CompareTag(Consts.KeyTag))
             _keyInRange = true;
 
         SetEnabledHelpInputKey(_playerInRange && _keyInRange);
@@ -44,10 +41,10 @@ public class Door : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(PlayerTag))
+        if (other.CompareTag(Consts.PlayerTag))
             _playerInRange = false;
         
-        if (other.CompareTag(KeyTag))
+        if (other.CompareTag(Consts.KeyTag))
             _keyInRange = false;
         
         SetEnabledHelpInputKey(_playerInRange && _keyInRange);
@@ -55,7 +52,7 @@ public class Door : MonoBehaviour
 
     private void SetEnabledHelpInputKey(bool isOn)
     {
-        helpInputkey.SetActive(isOn);
+        helpInputKey.SetActive(isOn);
         SetEnableInputAction(isOn);
     }
 

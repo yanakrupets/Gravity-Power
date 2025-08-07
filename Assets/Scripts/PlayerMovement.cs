@@ -3,6 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int YVelocity = Animator.StringToHash("YVelocity");
+    private static readonly int Grounded = Animator.StringToHash("IsGrounded");
+    private static readonly int Death = Animator.StringToHash("Death");
+
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 5f;
     
@@ -56,13 +61,13 @@ public class PlayerMovement : MonoBehaviour
     {
         playerPhysic2D.Rb.velocity = new Vector2(_horizontal * speed, playerPhysic2D.Rb.velocity.y);
         
-        float velocityForAnimation = gravityController.IsPositive 
+        var velocityForAnimation = gravityController.IsPositive 
             ? playerPhysic2D.Rb.velocity.y 
             : -playerPhysic2D.Rb.velocity.y;
         
-        animator.SetFloat("Speed", Mathf.Abs(_horizontal));
-        animator.SetFloat("YVelocity", velocityForAnimation);
-        animator.SetBool("IsGrounded", IsGrounded());
+        animator.SetFloat(Speed, Mathf.Abs(_horizontal));
+        animator.SetFloat(YVelocity, velocityForAnimation);
+        animator.SetBool(Grounded, IsGrounded());
     }
 
     private void Move(InputAction.CallbackContext context)
@@ -121,9 +126,9 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Spikes"))
+        if (collision.gameObject.CompareTag(Consts.SpikesTag))
         {
-            animator.SetTrigger("Death");
+            animator.SetTrigger(Death);
             mainCollider2D.isTrigger = true;
         }
     }

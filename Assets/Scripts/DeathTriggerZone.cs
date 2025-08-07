@@ -3,11 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class DeathTriggerZone : MonoBehaviour
 {
-    private const string PlayerTag = "Player";
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(PlayerTag))
+        if (other.CompareTag(Consts.PlayerTag))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
