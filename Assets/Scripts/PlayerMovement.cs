@@ -3,31 +3,25 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private static readonly int Speed = Animator.StringToHash("Speed");
-    private static readonly int YVelocity = Animator.StringToHash("YVelocity");
-    private static readonly int Grounded = Animator.StringToHash("IsGrounded");
-    private static readonly int Death = Animator.StringToHash("Death");
-
+    [Header("Movement Settings")]
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 5f;
     
+    [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.2f, 0.2f);
     [SerializeField] private LayerMask groundLayer;
     
+    [Space]
     [SerializeField] private GravityController gravityController;
-    [SerializeField] private InputActionAsset inputActionAsset;
+    [SerializeField] private PlayerAnimation playerAnimation;
     [SerializeField] private Physic2DElement playerPhysic2D;
-    [SerializeField] private Collider2D mainCollider2D;
-    
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Animator animator;
+    [SerializeField] private InputActionAsset inputActionAsset;
     
     private float _horizontal;
     private InputAction _moveAction;
     private InputAction _jumpAction;
     private bool _isFacingRight;
-    private bool _isMove;
     
     private void Awake()
     {
@@ -38,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
         _moveAction.canceled += StopMove;
         _jumpAction.performed += Jump;
 
+        playerPhysic2D.OnGravityChanged += UpdateFacingDirection;
+        
         _isFacingRight = true;
     }
     
@@ -55,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
         
         _moveAction.Disable();
         _jumpAction.Disable();
+        
+        if (playerPhysic2D != null)
+            playerPhysic2D.OnGravityChanged -= UpdateFacingDirection;
     }
 
     private void Update()
@@ -65,15 +64,13 @@ public class PlayerMovement : MonoBehaviour
             ? playerPhysic2D.Rb.velocity.y 
             : -playerPhysic2D.Rb.velocity.y;
         
-        animator.SetFloat(Speed, Mathf.Abs(_horizontal));
-        animator.SetFloat(YVelocity, velocityForAnimation);
-        animator.SetBool(Grounded, IsGrounded());
+        playerAnimation.UpdateMoveState(_horizontal, velocityForAnimation, IsGrounded());
     }
 
     private void Move(InputAction.CallbackContext context)
     {
         _horizontal = context.ReadValue<Vector2>().x;
-        Flip();
+        UpdateFacingDirection();
     }
 
     private void StopMove(InputAction.CallbackContext context)
@@ -95,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Flip()
+    private void UpdateFacingDirection()
     {
         if (_horizontal == 0) return;
     
@@ -109,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         if (_isFacingRight != shouldFaceRight)
         {
             _isFacingRight = shouldFaceRight;
-            spriteRenderer.flipX = !_isFacingRight;
+            playerAnimation.Flip(_isFacingRight);
         }
     }
     
@@ -118,18 +115,9 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
     }
     
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() 
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
-    }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag(Consts.SpikesTag))
-        {
-            animator.SetTrigger(Death);
-            mainCollider2D.isTrigger = true;
-        }
     }
 }

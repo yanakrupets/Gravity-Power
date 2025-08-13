@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5945219437284399855}
+  - component: {fileID: 131675965144286247}
   - component: {fileID: 6845015315822103291}
+  - component: {fileID: 5713494099114680605}
   - component: {fileID: 137694890125266316}
   - component: {fileID: 5194707719811509326}
   - component: {fileID: 3998990277369372406}
@@ -39,6 +41,20 @@ Transform:
   - {fileID: 2579753241702870567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &131675965144286247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300929667971578680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d747fd059c842c7b80ea8c0d6820ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimation: {fileID: 5713494099114680605}
+  mainCollider2D: {fileID: 5497646576321949685}
 --- !u!114 &6845015315822103291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,9 +75,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   gravityController: {fileID: 0}
-  inputActionAsset: {fileID: -944628639613478452, guid: 5d8f83562f738e843aada466ab270d54, type: 3}
+  playerAnimation: {fileID: 5713494099114680605}
   playerPhysic2D: {fileID: 137694890125266316}
-  mainCollider2D: {fileID: 5497646576321949685}
+  inputActionAsset: {fileID: -944628639613478452, guid: 5d8f83562f738e843aada466ab270d54, type: 3}
+--- !u!114 &5713494099114680605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300929667971578680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d2e33c124948d6b8ce3faac2b8cadb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityController: {fileID: 0}
   spriteRenderer: {fileID: 7828964773855878669}
   animator: {fileID: 7926454386123275830}
 --- !u!114 &137694890125266316

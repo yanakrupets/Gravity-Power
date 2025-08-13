@@ -1,11 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private string nextScene;
-    
     [SerializeField] private GameObject helpInputKey;
     [SerializeField] private InputActionAsset inputActionAsset;
 
@@ -70,6 +67,15 @@ public class Door : MonoBehaviour
 
     private void CompleteLevel(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene(nextScene);
+        if (LevelController.TryGetNextLevel(out var nextLevel))
+        {
+            SaveController.SaveLastLevel(nextLevel);
+            LevelController.LoadLevel(nextLevel);
+        }
+        else
+        {
+            SaveController.SetEndGame(true);
+            LevelController.LoadLast();
+        }
     }
 }

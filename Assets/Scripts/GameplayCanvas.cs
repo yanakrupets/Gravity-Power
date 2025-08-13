@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameplayCanvas : MonoBehaviour
@@ -18,6 +17,6 @@ public class GameplayCanvas : MonoBehaviour
 
     private void Reload()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LevelController.ReloadCurrentLevel();
     }
 }

@@ -3,17 +3,18 @@ using UnityEngine.InputSystem;
 
 public class GravityController : MonoBehaviour
 {
+    [Header("Gravity Settings")]
     [SerializeField] private float gravity = 9.8f;
     [SerializeField] private float maxFallSpeed = 15f;
     [SerializeField] private float fallSpeedMultiplier = 1.2f;
     
+    [Space]
     [SerializeField] private InputActionAsset inputActionAsset;
     [SerializeField] private Physic2DElement[] physicElements;
-    
-    private bool _isPositive;
+
     private InputAction _changeGravityAction;
     
-    public bool IsPositive => _isPositive;
+    public bool IsPositive { get; private set; }
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class GravityController : MonoBehaviour
 
     private void Start()
     {
-        _isPositive = true;
+        IsPositive = true;
     }
 
     private void Update()
@@ -44,7 +45,7 @@ public class GravityController : MonoBehaviour
         {
             Gravity(physicElement.Rb);
             
-            var targetRotation = _isPositive ? 0f : 180f;
+            var targetRotation = IsPositive ? 0f : 180f;
             physicElement.transform.rotation = Quaternion.Lerp(physicElement.transform.rotation, 
                 Quaternion.Euler(0, 0, targetRotation), Time.deltaTime * 10f);
         }
@@ -54,13 +55,18 @@ public class GravityController : MonoBehaviour
     {
         if (!context.performed) return;
         gravity = -gravity;
-        _isPositive = gravity > 0;
+        IsPositive = gravity > 0;
+        
+        foreach (var element in physicElements)
+        {
+            element.GravityChanged();
+        }
     }
 
     private void Gravity(Rigidbody2D rb)
     {
         var isMovingAgainstGravity = 
-            (_isPositive && rb.velocity.y > 0) || (!_isPositive && rb.velocity.y < 0);
+            (IsPositive && rb.velocity.y > 0) || (!IsPositive && rb.velocity.y < 0);
 
         if (!isMovingAgainstGravity)
         {

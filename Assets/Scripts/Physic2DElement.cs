@@ -1,14 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Physic2DElement : MonoBehaviour
 {
-    private Rigidbody2D _rb;
-
-    public Rigidbody2D Rb => _rb;
+    public Rigidbody2D Rb { get; private set; }
+    public event Action OnGravityChanged;
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        Rb = GetComponent<Rigidbody2D>();
+    }
+    
+    public void GravityChanged()
+    {
+        OnGravityChanged?.Invoke();
     }
 }

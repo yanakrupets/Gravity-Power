@@ -3998,11 +3998,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!95 &1887632794 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7926454386123275830, guid: a358c2eb57101b346835b5ee62b04369, type: 3}
-  m_PrefabInstance: {fileID: 3878383034348243067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909178096
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,6 +4348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5713494099114680605, guid: a358c2eb57101b346835b5ee62b04369, type: 3}
+      propertyPath: gravityController
+      value: 
+      objectReference: {fileID: 1355426232}
     - target: {fileID: 5945219437284399855, guid: a358c2eb57101b346835b5ee62b04369, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5
@@ -4397,14 +4396,6 @@ PrefabInstance:
       propertyPath: gravityController
       value: 
       objectReference: {fileID: 1355426232}
-    - target: {fileID: 6845015315822103291, guid: a358c2eb57101b346835b5ee62b04369, type: 3}
-      propertyPath: animationController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8987959124867316371, guid: a358c2eb57101b346835b5ee62b04369, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1887632794}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
