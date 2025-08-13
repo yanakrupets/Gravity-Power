@@ -1,18 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuCanvas : MonoBehaviour
+public class MenuCanvas : CanvasBase
 {
     [SerializeField] private Button playButton;
-    // levels button
-    // settings button
+    [SerializeField] private Button controlsButton;
+    [SerializeField] private Button levelsButton;
     
     // test
     [SerializeField] private Button resetButton;
 
     private void Awake()
     {
+        CanvasType = CanvasType.Menu;
+    }
+
+    private void OnEnable()
+    {
         playButton.onClick.AddListener(StartGame);
+        controlsButton.onClick.AddListener(OpenControls);
+        levelsButton.onClick.AddListener(OpenLevels);
         
         // test
         resetButton.onClick.AddListener(Reset);
@@ -21,6 +28,8 @@ public class MenuCanvas : MonoBehaviour
     private void OnDisable()
     {
         playButton.onClick.RemoveListener(StartGame);
+        controlsButton.onClick.RemoveListener(OpenControls);
+        levelsButton.onClick.RemoveListener(OpenLevels);
         
         // test
         resetButton.onClick.RemoveListener(Reset);
@@ -50,5 +59,15 @@ public class MenuCanvas : MonoBehaviour
     private void Reset()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    private void OpenControls()
+    {
+        Manager.OpenCanvas(CanvasType.Controls);
+    }
+
+    private void OpenLevels()
+    {
+        Manager.OpenCanvas(CanvasType.Levels);
     }
 }
