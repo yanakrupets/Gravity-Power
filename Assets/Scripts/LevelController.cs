@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
+    private static int _count;
+    
+    public static int LevelsCount => _count == 0 ? CalculateTotalLevels() : _count;
+
     public static void LoadLevel(int level)
     {
         SceneManager.LoadScene(Consts.LevelScenePrefix + level);
@@ -62,5 +66,15 @@ public class LevelController : MonoBehaviour
         }
         
         return lastAvailable;
+    }
+    
+    private static int CalculateTotalLevels()
+    {
+        var count = 0;
+        while (Application.CanStreamedLevelBeLoaded($"{Consts.LevelScenePrefix}{count}"))
+        {
+            count++;
+        }
+        return count;
     }
 }
