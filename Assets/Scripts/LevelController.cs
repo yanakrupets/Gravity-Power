@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     private static int _count;
-    
+
     public static int LevelsCount => _count == 0 ? CalculateTotalLevels() : _count;
+    public static int CurrentLevel { get; private set; }
 
     public static void LoadLevel(int level)
     {
+        CurrentLevel = level;
         SceneManager.LoadScene(Consts.LevelScenePrefix + level);
     }
 

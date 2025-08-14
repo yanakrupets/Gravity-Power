@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class SaveController : MonoBehaviour
 {
-    // add each level score ?
-    // time to complete level
-
     public static void SaveLastLevel(int level)
     {
         var savedLevel = GetLastLevel();
@@ -12,6 +9,17 @@ public class SaveController : MonoBehaviour
         {
             PlayerPrefs.SetInt(Consts.LevelKey, level);
         }
+    }
+
+    public static void SaveLevelCompleteTime(int currentLevel, float completeTime)
+    {
+        var lastCompleteLevelTimeString = GetLevelCompleteTime(currentLevel);
+        var lastCompleteLevelTime = TimeFormatter.ParseTimeToSeconds(lastCompleteLevelTimeString);
+
+        if (completeTime >= lastCompleteLevelTime && lastCompleteLevelTime != 0) return;
+        
+        var time = TimeFormatter.GetFormatTime(completeTime);
+        PlayerPrefs.SetString(Consts.TimeKey + currentLevel, time);
     }
 
     public static void SetEndGame(bool isGameOver)
@@ -22,6 +30,11 @@ public class SaveController : MonoBehaviour
     public static int GetLastLevel()
     {
         return PlayerPrefs.GetInt(Consts.LevelKey);
+    }
+
+    public static string GetLevelCompleteTime(int level)
+    {
+        return PlayerPrefs.GetString(Consts.TimeKey + level, "0 min 0 sec");
     }
 
     public static bool IsGameEnded()

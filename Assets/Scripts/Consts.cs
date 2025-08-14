@@ -9,4 +9,5 @@ public static class Consts
     public const string LastScene = "Last";
     public const string LevelKey = "Level";
     public const string EndGameKey = "EndGame";
+    public const string TimeKey = "Time_level_";
 }

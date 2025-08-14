@@ -67,6 +67,8 @@ public class Door : MonoBehaviour
 
     private void CompleteLevel(InputAction.CallbackContext context)
     {
+        SaveController.SaveLevelCompleteTime(LevelController.CurrentLevel, Time.timeSinceLevelLoad);
+        
         if (LevelController.TryGetNextLevel(out var nextLevel))
         {
             SaveController.SaveLastLevel(nextLevel);

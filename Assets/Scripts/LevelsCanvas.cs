@@ -30,7 +30,11 @@ public class LevelsCanvas : CanvasBase
         var lastOpenedLevel = SaveController.GetLastLevel();
         for (var i = 0; i < _levelButtons.Count; i++)
         {
-            _levelButtons[i].Initialize(i, GetLevelPreview(i), i <= lastOpenedLevel);
+            _levelButtons[i].Initialize(
+                i, 
+                GetLevelPreview(i), 
+                SaveController.GetLevelCompleteTime(i), 
+                i <= lastOpenedLevel);
         }
     }
     

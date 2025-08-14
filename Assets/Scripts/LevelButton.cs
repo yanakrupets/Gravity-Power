@@ -5,6 +5,8 @@ public class LevelButton : MonoBehaviour
 {
     [SerializeField] private Button levelButton;
     [SerializeField] private GameObject blockImage;
+    [SerializeField] private Text completeTimeText;
+    [SerializeField] private GameObject completeTimeObject;
 
     private int _level;
 
@@ -18,10 +20,11 @@ public class LevelButton : MonoBehaviour
         levelButton.onClick.RemoveListener(LoadLevel);
     }
 
-    public void Initialize(int level, Sprite levelSprite, bool isOpen)
+    public void Initialize(int level, Sprite levelSprite, string time, bool isOpen)
     {
         _level = level;
         levelButton.image.sprite = levelSprite;
+        completeTimeText.text = time;
         
         SetActive(isOpen);
     }
@@ -30,6 +33,7 @@ public class LevelButton : MonoBehaviour
     {
         levelButton.interactable = isActive;
         blockImage.SetActive(!isActive);
+        completeTimeObject.SetActive(isActive);
     }
 
     private void LoadLevel()
