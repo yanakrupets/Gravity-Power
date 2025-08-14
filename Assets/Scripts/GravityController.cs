@@ -20,11 +20,14 @@ public class GravityController : MonoBehaviour
     private void Awake()
     {
         _changeGravityAction = inputActionAsset.FindAction("ChangeGravity");
-        _changeGravityAction.performed += ChangeGravity;
+        
+        IsPositive = true;
     }
 
     private void OnEnable()
     {
+        _changeGravityAction.performed += ChangeGravity;
+        
         _changeGravityAction.Enable();
     }
 
@@ -33,11 +36,6 @@ public class GravityController : MonoBehaviour
         _changeGravityAction.performed -= ChangeGravity;
         
         _changeGravityAction.Disable();
-    }
-
-    private void Start()
-    {
-        IsPositive = true;
     }
 
     private void Update()

@@ -9,10 +9,14 @@ public class Door : MonoBehaviour
     private InputAction _completeLevelAction;
     private bool _playerInRange;
     private bool _keyInRange;
-    
+
     private void Awake()
     {
         _completeLevelAction = inputActionAsset.FindAction("CompleteLevel");
+    }
+
+    private void OnEnable()
+    {
         _completeLevelAction.performed += CompleteLevel;
 
         _completeLevelAction.Disable();

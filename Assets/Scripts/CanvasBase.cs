@@ -4,7 +4,6 @@ public abstract class CanvasBase : MonoBehaviour
 {
     [SerializeField] private CanvasType type;
     
-    protected CanvasType CanvasType;
     protected CanvasManager Manager;
 
     public CanvasType Type => type;

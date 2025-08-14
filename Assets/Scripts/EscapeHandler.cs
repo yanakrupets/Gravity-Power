@@ -7,10 +7,13 @@ public class EscapeHandler : MonoBehaviour
     
     private InputAction _openMenuAction;
 
-    private void OnEnable()
+    private void Awake()
     {
         _openMenuAction = inputActionAsset.FindAction("MenuOpen");
-        
+    }
+
+    private void OnEnable()
+    {
         _openMenuAction.performed += LoadStart;
         
         _openMenuAction.Enable();

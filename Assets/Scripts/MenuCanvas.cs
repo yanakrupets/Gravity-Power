@@ -10,11 +10,6 @@ public class MenuCanvas : CanvasBase
     // test
     [SerializeField] private Button resetButton;
 
-    private void Awake()
-    {
-        CanvasType = CanvasType.Menu;
-    }
-
     private void OnEnable()
     {
         playButton.onClick.AddListener(StartGame);

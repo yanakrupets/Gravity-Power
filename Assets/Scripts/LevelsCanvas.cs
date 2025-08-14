@@ -14,8 +14,6 @@ public class LevelsCanvas : CanvasBase
 
     private void Awake()
     {
-        CanvasType = CanvasType.Levels;
-        
         for (var i = 0; i < LevelController.LevelsCount; i++)
         {
             var levelButton = Instantiate(levelButtonPrefab, levelButtonsParent);

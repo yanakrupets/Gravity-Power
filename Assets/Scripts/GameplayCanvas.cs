@@ -5,7 +5,7 @@ public class GameplayCanvas : MonoBehaviour
 {
     [SerializeField] private Button reloadButton;
 
-    private void Awake()
+    private void OnEnable()
     {
         reloadButton.onClick.AddListener(Reload);
     }

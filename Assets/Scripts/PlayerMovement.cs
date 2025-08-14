@@ -28,17 +28,17 @@ public class PlayerMovement : MonoBehaviour
         _moveAction = inputActionAsset.FindAction("Move");
         _jumpAction = inputActionAsset.FindAction("Jump");
         
-        _moveAction.performed += Move;
-        _moveAction.canceled += StopMove;
-        _jumpAction.performed += Jump;
-
-        playerPhysic2D.OnGravityChanged += UpdateFacingDirection;
-        
         _isFacingRight = true;
     }
     
     private void OnEnable()
     {
+        _moveAction.performed += Move;
+        _moveAction.canceled += StopMove;
+        _jumpAction.performed += Jump;
+        
+        playerPhysic2D.OnGravityChanged += UpdateFacingDirection;
+        
         _moveAction.Enable();
         _jumpAction.Enable();
     }
