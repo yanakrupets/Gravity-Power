@@ -88,6 +88,7 @@ MonoBehaviour:
   gravity: 9.8
   maxFallSpeed: 15
   fallSpeedMultiplier: 1.2
+  playerMovement: {fileID: 7780707395018769764}
   inputActionAsset: {fileID: -944628639613478452, guid: 5d8f83562f738e843aada466ab270d54, type: 3}
   physicElements:
   - {fileID: 3813970313461072403}
@@ -3748,6 +3749,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5945219437284399855, guid: a358c2eb57101b346835b5ee62b04369, type: 3}
   m_PrefabInstance: {fileID: 3820390654370254751}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7780707395018769764 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6845015315822103291, guid: a358c2eb57101b346835b5ee62b04369, type: 3}
+  m_PrefabInstance: {fileID: 3820390654370254751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf98452625c8b64e904a135472dfe41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5081203026105343166
 PrefabInstance:
   m_ObjectHideFlags: 0

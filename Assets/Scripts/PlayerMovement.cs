@@ -66,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
         
         playerAnimation.UpdateMoveState(_horizontal, velocityForAnimation, IsGrounded());
     }
+    
+    public bool IsGrounded()
+    {
+        return Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
+    }
 
     private void Move(InputAction.CallbackContext context)
     {
@@ -108,11 +113,6 @@ public class PlayerMovement : MonoBehaviour
             _isFacingRight = shouldFaceRight;
             playerAnimation.Flip(_isFacingRight);
         }
-    }
-    
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
     }
     
     private void OnDrawGizmosSelected() 

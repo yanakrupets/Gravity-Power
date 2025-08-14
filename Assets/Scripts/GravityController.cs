@@ -9,6 +9,7 @@ public class GravityController : MonoBehaviour
     [SerializeField] private float fallSpeedMultiplier = 1.2f;
     
     [Space]
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private InputActionAsset inputActionAsset;
     [SerializeField] private Physic2DElement[] physicElements;
 
@@ -54,6 +55,8 @@ public class GravityController : MonoBehaviour
     private void ChangeGravity(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        if (!playerMovement.IsGrounded()) return;
+        
         gravity = -gravity;
         IsPositive = gravity > 0;
         
