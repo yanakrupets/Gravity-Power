@@ -48,6 +48,7 @@ public class LevelsCanvas : CanvasBase
 
     private void OpenMenu()
     {
+        SoundController.Play(SoundType.UIButton);
         Manager.OpenCanvas(CanvasType.Menu);
     }
 }

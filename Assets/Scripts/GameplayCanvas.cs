@@ -17,6 +17,7 @@ public class GameplayCanvas : MonoBehaviour
 
     private void Reload()
     {
+        SoundController.Play(SoundType.UIButton);
         LevelController.ReloadCurrentLevel();
     }
 }

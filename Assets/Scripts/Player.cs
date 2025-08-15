@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     
     private void HandleDeath()
     {
+        SoundController.Play(SoundType.Death);
         playerAnimation.PlayDeathAnimation();
         mainCollider2D.isTrigger = true;
     }

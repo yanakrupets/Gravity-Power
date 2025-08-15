@@ -38,6 +38,7 @@ public class LevelButton : MonoBehaviour
 
     private void LoadLevel()
     {
+        SoundController.Play(SoundType.UIButton);
         LevelController.LoadLevel(_level);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SaveController : MonoBehaviour
+public static class SaveController
 {
     public static void SaveLastLevel(int level)
     {

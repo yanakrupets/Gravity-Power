@@ -17,6 +17,7 @@ public class ControlsCanvas : CanvasBase
 
     private void OpenMenu()
     {
+        SoundController.Play(SoundType.UIButton);
         Manager.OpenCanvas(CanvasType.Menu);
     }
 }

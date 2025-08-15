@@ -32,6 +32,8 @@ public class MenuCanvas : CanvasBase
 
     private void StartGame()
     {
+        SoundController.Play(SoundType.UIButton);
+        
         if (SaveController.IsGameEnded())
         {
             var lastLevel = LevelController.GetLastAvailableLevel();
@@ -58,11 +60,13 @@ public class MenuCanvas : CanvasBase
 
     private void OpenControls()
     {
+        SoundController.Play(SoundType.UIButton);
         Manager.OpenCanvas(CanvasType.Controls);
     }
 
     private void OpenLevels()
     {
+        SoundController.Play(SoundType.UIButton);
         Manager.OpenCanvas(CanvasType.Levels);
     }
 }

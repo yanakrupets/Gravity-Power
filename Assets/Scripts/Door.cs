@@ -71,6 +71,8 @@ public class Door : MonoBehaviour
 
     private void CompleteLevel(InputAction.CallbackContext context)
     {
+        SoundController.Play(SoundType.DoorOpen);
+        
         SaveController.SaveLevelCompleteTime(LevelController.CurrentLevel, Time.timeSinceLevelLoad);
         
         if (LevelController.TryGetNextLevel(out var nextLevel))

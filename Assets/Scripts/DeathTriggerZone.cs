@@ -7,6 +7,7 @@ public class DeathTriggerZone : MonoBehaviour
     {
         if (other.CompareTag(Consts.PlayerTag))
         {
+            SoundController.Play(SoundType.Death);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

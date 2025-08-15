@@ -27,6 +27,8 @@ public class RelatedButtonsController : MonoBehaviour
 
     public void OnButtonPressed(RelatedButton pressedButton)
     {
+        SoundController.Play(SoundType.PlayableButton);
+        
         if (pressedButton == buttonA)
         {
             buttonA.SetState(false);

@@ -55,6 +55,8 @@ public class GravityController : MonoBehaviour
         if (!context.performed) return;
         if (!playerMovement.IsGrounded()) return;
         
+        SoundController.Play(SoundType.GravityChange);
+        
         gravity = -gravity;
         IsPositive = gravity > 0;
         

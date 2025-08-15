@@ -19,6 +19,7 @@ public class HoldableButton : MonoBehaviour
     
     private void Interact(bool isOn)
     {
+        SoundController.Play(SoundType.PlayableButton);
         _spriteRenderer.sprite = isOn ? activeSprite : inactiveSprite;
     }
     

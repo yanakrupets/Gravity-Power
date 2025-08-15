@@ -8,6 +8,8 @@ public class KeyCollector : MonoBehaviour
     {
         if (other.CompareTag(Consts.KeyTag)) 
         {
+            SoundController.Play(SoundType.KeyPick);
+            
             other.transform.SetParent(transform);
             other.transform.localPosition = keyPosition;
             other.transform.localRotation = Quaternion.identity;

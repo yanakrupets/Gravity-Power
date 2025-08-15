@@ -28,6 +28,7 @@ public class EscapeHandler : MonoBehaviour
     
     private void LoadStart(InputAction.CallbackContext context)
     {
+        SoundController.Play(SoundType.UIButton);
         LevelController.LoadStart();
     }
 }

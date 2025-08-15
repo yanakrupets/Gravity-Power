@@ -12,8 +12,8 @@ public class DoubleSpike : MonoBehaviour
     
     public void Swap()
     {
-        spikeA.SetState(!spikeA.IsActive);
-        spikeB.SetState(!spikeB.IsActive);
+        spikeA.SetActive(!spikeA.IsActive);
+        spikeB.SetActive(!spikeB.IsActive);
     }
 
     private void SetInitialState()

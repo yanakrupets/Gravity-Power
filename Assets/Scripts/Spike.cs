@@ -6,6 +6,12 @@ public class Spike : MonoBehaviour
 
     public bool IsActive { get; private set; }
 
+    public void SetActive(bool isActive)
+    {
+        SetState(isActive);
+        SoundController.Play(isActive ? SoundType.SpikesOpened : SoundType.SpikesClosed);
+    }
+
     public void SetState(bool isActive)
     {
         IsActive = isActive;
