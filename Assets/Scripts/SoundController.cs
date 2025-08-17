@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class SoundController : MonoBehaviour
@@ -23,6 +24,12 @@ public class SoundController : MonoBehaviour
     
     public static void Play(SoundType soundType)
     {
+        if (Instance is null)
+        {
+            Debug.LogWarning("Sound Controller is inactive");
+            return;
+        }
+        
         var sound = Instance.sounds.FirstOrDefault(sound => sound.type == soundType);
         if (sound != null)
         {

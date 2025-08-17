@@ -1,32 +1,7 @@
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+public class MovingPlatform : MoveBetweenTwoPoints
 {
-    [SerializeField] private Transform pointA;
-    [SerializeField] private Transform pointB;
-    [SerializeField] private float speed;
-    
-    private Vector3 _nextPosition;
-    private const float DistanceThreshold = 0.1f;
-
-    private void Start()
-    {
-        _nextPosition = pointB.position;
-    }
-
-    private void Update()
-    {
-        transform.position = Vector3.MoveTowards(
-            transform.position, 
-            _nextPosition, 
-            speed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, _nextPosition) <= DistanceThreshold)
-        {
-            _nextPosition = _nextPosition == pointA.position ? pointB.position : pointA.position;
-        }
-    }
-    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(Consts.PlayerTag) 
@@ -41,6 +16,9 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag(Consts.PlayerTag)
             || collision.gameObject.CompareTag(Consts.CrateTag))
         {
+            if (this == null || collision.transform == null || gameObject.activeInHierarchy == false)
+                return;
+            
             collision.transform.SetParent(null);
         }
     }

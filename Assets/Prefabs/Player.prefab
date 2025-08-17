@@ -90,7 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d2e33c124948d6b8ce3faac2b8cadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityController: {fileID: 0}
   spriteRenderer: {fileID: 7828964773855878669}
   animator: {fileID: 7926454386123275830}
 --- !u!114 &137694890125266316
@@ -246,8 +245,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008735359, y: -0.046521723}
-  m_Size: {x: 0.80608994, y: 0.90695655}
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 0.8, y: 0.9}
   m_Direction: 0
 --- !u!1 &4566132428094845043
 GameObject:

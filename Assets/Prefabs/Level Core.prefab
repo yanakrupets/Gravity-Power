@@ -89,6 +89,7 @@ MonoBehaviour:
   gravity: 9.8
   maxFallSpeed: 15
   fallSpeedMultiplier: 1.2
+  rotationSpeed: 20
   playerMovement: {fileID: 7780707395018769764}
   inputActionAsset: {fileID: -944628639613478452, guid: 5d8f83562f738e843aada466ab270d54, type: 3}
   physicElements:

@@ -7,6 +7,7 @@ public class HoldableButton : MonoBehaviour
     [SerializeField] private Sprite activeSprite;
     [SerializeField] private Sprite inactiveSprite;
     
+    [Space]
     [SerializeField] private UnityEvent onInteract;
     [SerializeField] private UnityEvent onStopInteract;
     

@@ -7,6 +7,7 @@ public class GravityController : MonoBehaviour
     [SerializeField] private float gravity = 9.8f;
     [SerializeField] private float maxFallSpeed = 15f;
     [SerializeField] private float fallSpeedMultiplier = 1.2f;
+    [SerializeField] private float rotationSpeed = 10f;
     
     [Space]
     [SerializeField] private PlayerMovement playerMovement;
@@ -46,7 +47,7 @@ public class GravityController : MonoBehaviour
             
             var targetRotation = IsPositive ? 0f : 180f;
             physicElement.transform.rotation = Quaternion.Lerp(physicElement.transform.rotation, 
-                Quaternion.Euler(0, 0, targetRotation), Time.deltaTime * 10f);
+                Quaternion.Euler(0, 0, targetRotation), Time.deltaTime * rotationSpeed);
         }
     }
 
