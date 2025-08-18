@@ -8,7 +8,7 @@ public class MenuCanvas : CanvasBase
     [SerializeField] private Button levelsButton;
     
     // test
-    [SerializeField] private Button resetButton;
+    // [SerializeField] private Button resetButton;
 
     private void OnEnable()
     {
@@ -17,7 +17,7 @@ public class MenuCanvas : CanvasBase
         levelsButton.onClick.AddListener(OpenLevels);
         
         // test
-        resetButton.onClick.AddListener(Reset);
+        // resetButton.onClick.AddListener(Reset);
     }
 
     private void OnDisable()
@@ -27,7 +27,7 @@ public class MenuCanvas : CanvasBase
         levelsButton.onClick.RemoveListener(OpenLevels);
         
         // test
-        resetButton.onClick.RemoveListener(Reset);
+        // resetButton.onClick.RemoveListener(Reset);
     }
 
     private void StartGame()
@@ -53,10 +53,10 @@ public class MenuCanvas : CanvasBase
     }
     
     // test
-    private void Reset()
-    {
-        PlayerPrefs.DeleteAll();
-    }
+    // private void Reset()
+    // {
+    //     PlayerPrefs.DeleteAll();
+    // }
 
     private void OpenControls()
     {

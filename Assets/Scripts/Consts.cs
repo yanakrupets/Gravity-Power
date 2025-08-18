@@ -10,4 +10,5 @@ public static class Consts
     public const string LevelKey = "Level";
     public const string EndGameKey = "EndGame";
     public const string TimeKey = "Time_level_";
+    public const string Volume = "VolumeParam";
 }
